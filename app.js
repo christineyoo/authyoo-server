@@ -5,7 +5,7 @@ const app = express()
 
 //EJS
 app.use(expressLayouts)
-app.set('view-engine', 'ejs')
+app.set('view engine', 'ejs')
 
 //Routes
 app.use('/', require('./routes/index'))
