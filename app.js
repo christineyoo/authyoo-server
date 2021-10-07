@@ -1,7 +1,19 @@
 const express = require('express')
 const expressLayouts = require('express-ejs-layouts')
+const mongoose = require('mongoose')
 
 const app = express()
+
+//DB Config
+const db = require('./config/keys').MongoURI
+
+// Connect to Mongo
+mongoose.connect(db, { useNewUrlParser: true })
+    .then(() => console.log('MongoDB connected...'))
+    .catch(err => console.log(err))
+
+//Body parser - allows us to get data from our form with request.body
+app.use(express.urlencoded({ extended: false }))
 
 //EJS
 app.use(expressLayouts)
